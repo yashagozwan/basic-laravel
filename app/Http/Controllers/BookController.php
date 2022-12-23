@@ -81,10 +81,14 @@ class BookController extends Controller
     {
 
         // Start From
-        $start = 20;
+        $start = 1;
         $end = 25;
 
-        $product = ['comic' => 'Kino', 'of' => 20];
+        $product = [
+            'lot' => 'PEX' . random_int(10_000, 10_000_000),
+            'of' => 50,
+        ];
+
         $products = [];
 
         for ($i = $start; $i <= $end; $i++) {
@@ -94,7 +98,7 @@ class BookController extends Controller
 
         for ($i = 0; $i < count($products); $i++) {
             $product = $products[$i];
-            echo 'Start ' . $product['start'] . ' ' . $product['comic'] . ' OF ' . $product['of'] . PHP_EOL;
+            echo 'Start ' . $product['start'] . ' ' . $product['lot'] . ' OF ' . $product['of'] . PHP_EOL;
         }
 
         $slug = $request->slug;
