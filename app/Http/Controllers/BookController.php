@@ -79,11 +79,30 @@ class BookController extends Controller
 
     public function bookPdf(Request $request)
     {
+
+        // Start From
+        $start = 20;
+        $end = 25;
+
+        $product = ['comic' => 'Kino', 'of' => 20];
+        $products = [];
+
+        for ($i = $start; $i <= $end; $i++) {
+            $product['start'] = $i;
+            $products [] = $product;
+        }
+
+        for ($i = 0; $i < count($products); $i++) {
+            $product = $products[$i];
+            echo 'Start ' . $product['start'] . ' ' . $product['comic'] . ' OF ' . $product['of'] . PHP_EOL;
+        }
+
         $slug = $request->slug;
         $start = $request->start;
         $end = $request->end;
 
         $book = $this->getBookBySlug($slug);
+
         $data = [
             'title' => $book['slug'],
             'book' => $book,

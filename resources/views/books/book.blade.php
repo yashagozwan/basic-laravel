@@ -19,6 +19,7 @@
 
                 <h5 class="card-title" onclick="showAlert('{{ $book['title'] }}')">{{ $book['title'] }}</h5>
                 <p class="card-text" id="author">{{ $book['author'] }}</p>
+
             </div>
         </div>
         <a href="/books">Back</a>
