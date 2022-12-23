@@ -1,0 +1,37 @@
+/* reset */
+body {
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main__content {
+    display: flex;
+}
+
+/* Navbar */
+.tasks__navbar {
+    background-color: black;
+    width: 200px;
+    height: 100vh;
+    color: white;
+    margin-right: 16px;
+}
+
+.tasks_menu_item {
+    background: #2e2e2e;
+    padding: 16px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-bottom: 8px;
+}

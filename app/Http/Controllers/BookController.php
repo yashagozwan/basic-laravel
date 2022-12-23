@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class BookController extends Controller
+{
+    public function __invoke(Request $request): string
+    {
+        return 'Hello Book';
+    }
+
+    public function books(): View
+    {
+        $books = [
+            [
+                'id' => random_int(10_000, 10_000_000),
+                'title' => 'JavaScript Clever',
+                'slug' => 'javascript-clever',
+                'price' => 1.23,
+                'author' => 'Brad'
+            ],
+            [
+                'id' => random_int(10_000, 10_000_000),
+                'title' => 'Dart Most Wanted',
+                'slug' => 'dart-most-wanted',
+                'price' => 1.23,
+                'author' => 'Brad'
+            ]
+        ];
+
+        $data = [
+            'title' => 'Books',
+            'books' => $books,
+        ];
+
+        return view('books.books', $data);
+    }
+
+    public function book(Request $request): View
+    {
+        $slug = $request->slug;
+        $book = $this->getBookBySlug($slug);
+
+        $data = [
+            'title' => $slug,
+            'book' => $book,
+        ];
+
+        return view('books.book', $data);
+    }
+
+    private function getBookBySlug(string $slug): array
+    {
+        $books = [
+            [
+                'id' => random_int(10_000, 10_000_000),
+                'title' => 'JavaScript Clever',
+                'slug' => 'javascript-clever',
+                'price' => 1.23,
+                'author' => 'Brad'
+            ],
+            [
+                'id' => random_int(10_000, 10_000_000),
+                'title' => 'Dart Most Wanted',
+                'slug' => 'dart-most-wanted',
+                'price' => 1.23,
+                'author' => 'Brad'
+            ]
+        ];
+
+        // array search
+        $bookIndex = array_search($slug, array_column($books, 'slug'));
+        return $books[$bookIndex];
+    }
+
+    public function bookPdf(Request $request)
+    {
+        $slug = $request->slug;
+        $start = $request->start;
+        $end = $request->end;
+
+        $book = $this->getBookBySlug($slug);
+        $data = [
+            'title' => $book['slug'],
+            'book' => $book,
+        ];
+
+        // print
+        return Pdf::loadView('books.book_pdf', $data)->stream();
+
+        // return $pdf->download('book.pdf');
+    }
+}
