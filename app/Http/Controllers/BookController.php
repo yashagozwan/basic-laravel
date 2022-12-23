@@ -81,29 +81,27 @@ class BookController extends Controller
     {
 
         // Start From
-        $start = 1;
-        $end = 25;
+        // $start = 1;
+        // $end = 25;
 
-        $product = [
-            'lot' => 'PEX' . random_int(10_000, 10_000_000),
-            'of' => 50,
-        ];
+        // $product = [
+        //     'lot' => 'PEX' . random_int(10_000, 10_000_000),
+        //     'of' => 50,
+        // ];
 
-        $products = [];
+        // $products = [];
 
-        for ($i = $start; $i <= $end; $i++) {
-            $product['start'] = $i;
-            $products [] = $product;
-        }
+        // for ($i = $start; $i <= $end; $i++) {
+        //     $product['start'] = $i;
+        //     $products [] = $product;
+        // }
 
-        for ($i = 0; $i < count($products); $i++) {
-            $product = $products[$i];
-            echo 'Start ' . $product['start'] . ' ' . $product['lot'] . ' OF ' . $product['of'] . PHP_EOL;
-        }
+        // for ($i = 0; $i < count($products); $i++) {
+        //     $product = $products[$i];
+        //     echo 'Start ' . $product['start'] . ' ' . $product['lot'] . ' OF ' . $product['of'] . PHP_EOL;
+        // }
 
         $slug = $request->slug;
-        $start = $request->start;
-        $end = $request->end;
 
         $book = $this->getBookBySlug($slug);
 
