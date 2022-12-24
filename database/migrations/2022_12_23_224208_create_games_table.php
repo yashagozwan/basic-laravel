@@ -15,9 +15,10 @@ return new class extends Migration {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('hours');
             $table->string('author');
+            $table->string('writer');
             $table->integer('price');
+            $table->dateTime('realise');
         });
     }
 
